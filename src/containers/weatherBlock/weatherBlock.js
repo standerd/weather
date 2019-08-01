@@ -1,21 +1,30 @@
-import React from "react";
+import React, { Component } from "react";
 import "./weatherBlock.css";
 
-const weatherBlock = props => {
+class WeatherBlock extends Component {
+  render() {
+    let blockItem = this.props.weather.map((key, i) => {
+      return (
+        <div key={i} className="weather">
+          <h3>Weather as at</h3>
+          <h3> {this.props.loaded ? this.props.weather[i].dt_txt : ""}</h3>
+          <p>
+            Temp: {this.props.loaded ? this.props.weather[i].main.temp : ""} c
+          </p>
+          <p>
+            Wind: {this.props.loaded ? this.props.weather[i].wind.speed : ""}{" "}
+            km/h
+          </p>
+          <p>
+            Conditions:{" "}
+            {this.props.loaded ? this.props.weather[i].weather[0].main : ""}{" "}
+          </p>
+        </div>
+      );
+    });
 
-let array = props.weather;
+    return this.props.loaded ? blockItem : "";
+  }
+}
 
-
-  return (
-    <div className="weatherBlock">
-    <div className="weather">
-      <h3>Weather for Today</h3>
-      <p>Temp: {props.loaded ? array[0].main.temp : ""} c</p>
-      <p>Wind: km/h</p>
-      <p>Cond: </p>
-    </div>
-  </div>
-  );
-};
-
-export default weatherBlock;
+export default WeatherBlock;

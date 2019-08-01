@@ -1,7 +1,19 @@
-.App{
-  width: 80%;
-  margin: 10% auto;
-  background-color: pink;
+.App {
+  width: 70%;
+  margin: 5% auto;
+  background-color: rgba(245, 243, 121, 0.4);
   text-align: center;
   padding: 15px;
+  color: black;
+  border: 5px solid rgb(70, 141, 235);
+  box-shadow: 2px 2px 1px lightblue;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.hourly {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
