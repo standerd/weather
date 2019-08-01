@@ -69,7 +69,8 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Please Select a City</h1>
+        <img src={require("./images/weather.jpg")} alt="weather" />
+        <h1>5 Day Weather Forecast</h1>
         <select onChange={this.citySelectHandler}>
           <option>Please Select City</option>
           <option value="Cape Town">Cape Town</option>
@@ -79,9 +80,10 @@ class App extends Component {
           <option value="East London">East London</option>
           <option value="Bloemfontein">Bloemfontein</option>
           <option value="Kroonstad">Kroonstad</option>
+          <option value="Albi">Albi</option>
         </select>
 
-        {this.state.isError ? <h1>Please Select A</h1> : success}
+        {this.state.isError ? <h1>Please Select A City</h1> : success}
       </div>
     );
   }
