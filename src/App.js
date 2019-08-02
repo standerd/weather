@@ -10,6 +10,7 @@ class App extends Component {
     isError: false
   };
 
+  //if the API fetch fails an error will be returned
   handleErrors(response) {
     if (!response.ok) {
       throw Error(response.statusText);
@@ -17,6 +18,7 @@ class App extends Component {
     return response;
   }
 
+  // on user city selection call this function to get data and update component
   citySelectHandler = e => {
     this.setState({ isLoading: true });
     fetch(
@@ -36,12 +38,15 @@ class App extends Component {
       })
       .catch(error => {
         this.setState({ isError: true });
-        console.log("Daar war kak");
       });
   };
 
   render() {
+    // If loading is a success load the below jsx code
     const success = (
+      // "this.stateloading ?" below checks if the user has selected a city or not and only
+      // renders the elements if selected.
+
       <div>
         {this.state.isLoading ? (
           <h3>Loading Please be Patient</h3>
@@ -69,9 +74,12 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Please Select a City</h1>
+        <img src={require("./images/weather.jpg")} alt="weather" />
+        <h1>5 Day Weather Forecast</h1>
         <select onChange={this.citySelectHandler}>
           <option>Please Select City</option>
+          {/* The below list is short, should however manage this via Map and an array if the 
+              list of cities becomes larger */}
           <option value="Cape Town">Cape Town</option>
           <option value="Johannesburg">Johannesburg</option>
           <option value="Durban">Durban</option>
@@ -79,9 +87,10 @@ class App extends Component {
           <option value="East London">East London</option>
           <option value="Bloemfontein">Bloemfontein</option>
           <option value="Kroonstad">Kroonstad</option>
+          <option value="Albi">Albi</option>
         </select>
 
-        {this.state.isError ? <h1>Please Select A</h1> : success}
+        {this.state.isError ? <h1>Please Select A City</h1> : success}
       </div>
     );
   }

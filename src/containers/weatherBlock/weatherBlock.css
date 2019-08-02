@@ -2,6 +2,16 @@
   width: 18%;
   border-radius: 8px;
   margin-top: 10px;
-  padding: 0 5px;
-  border: 3px solid rgb(70, 141, 245);
+  padding: 2% 5px;
+  border: 3px solid #ccc;
+  background-color: rgba(32, 32, 31, 0.8);
+}
+
+.weather:hover {
+  transform: scale(1.2);
+  background-color: rgba(32, 32, 31, 1);
+}
+
+span {
+  font-size: 1.3em;
 }

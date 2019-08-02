@@ -3,22 +3,45 @@ import "./weatherBlock.css";
 
 class WeatherBlock extends Component {
   render() {
+    let conditions = "";
+
+    // map through the array received from props from the API fetch and returns the
+    // weather block.
+
     let blockItem = this.props.weather.map((key, i) => {
+      // checks the conditions from the API and sets the small img accordingly
+
+      if (this.props.weather[i].weather[0].main === "Clouds") {
+        conditions = <i class="fas fa-cloud" />;
+      } else if (this.props.weather[i].weather[0].main === "Rain") {
+        conditions = <i class="fas fa-cloud-showers-heavy" />;
+      } else {
+        conditions = <i class="fas fa-sun" />;
+      }
+
       return (
         <div key={i} className="weather">
           <h3>Weather as at</h3>
           <h3> {this.props.loaded ? this.props.weather[i].dt_txt : ""}</h3>
           <p>
-            Temp: {this.props.loaded ? this.props.weather[i].main.temp : ""} c
+            Temp:{" "}
+            {this.props.loaded
+              ? Math.floor(this.props.weather[i].main.temp)
+              : ""}{" "}
+            c
           </p>
           <p>
-            Wind: {this.props.loaded ? this.props.weather[i].wind.speed : ""}{" "}
+            Wind:{" "}
+            {this.props.loaded
+              ? Math.floor(this.props.weather[i].wind.speed)
+              : ""}{" "}
             km/h
           </p>
           <p>
             Conditions:{" "}
-            {this.props.loaded ? this.props.weather[i].weather[0].main : ""}{" "}
+            {this.props.loaded ? this.props.weather[i].weather[0].main : ""}
           </p>
+          <span>{conditions}</span>
         </div>
       );
     });
